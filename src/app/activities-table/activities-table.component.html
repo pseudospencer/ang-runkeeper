@@ -1,0 +1,46 @@
+<div>
+  <h2>Stats</h2>
+  <mat-card class="margin">Total Distance: {{ totalDistance }}</mat-card>
+  <mat-card class="margin">Total Runs: {{ totalRuns }}</mat-card>
+</div>
+<div>
+  <mat-card class="margin">
+    <mat-table [dataSource]="runs">
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let run"
+          ><a routerLink="/run/{{ run.id }}">{{ run.date | date }}</a></mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="calories_burned">
+        <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
+        <mat-cell *matCellDef="let run">{{ run.calories_burned }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="distance_in_mi">
+        <mat-header-cell *matHeaderCellDef>Distance (mi)</mat-header-cell>
+        <mat-cell *matCellDef="let run">
+          {{ run.distance_in_mi }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="climb_ft">
+        <mat-header-cell *matHeaderCellDef>Climb (ft)</mat-header-cell>
+        <mat-cell *matCellDef="let run">
+          {{ run.climb_ft }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="average_speed_mph">
+        <mat-header-cell *matHeaderCellDef>Average Speed (mph)</mat-header-cell>
+        <mat-cell *matCellDef="let run">
+          {{ run.average_speed_mph }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="runCols"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: runCols"></mat-row>
+    </mat-table>
+  </mat-card>
+</div>
