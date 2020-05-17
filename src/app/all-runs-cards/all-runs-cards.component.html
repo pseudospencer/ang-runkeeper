@@ -5,7 +5,8 @@
         >Run on {{ run.date | date }}</a
       ></mat-card-title
     >
-    <div mat-card-image id="map"></div>
+    <div mat-card-image id="{{ 'map-' + run.id }}" class="map"></div>
+
     <mat-card-content>
       <p>
         Duration: <span>{{ run.duration }} min</span>

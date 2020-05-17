@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Run on {{ run.date | date }} </mat-card-title>
 
-  <div mat-card-image id="map"></div>
+  <div mat-card-image id="map" class="map"></div>
   <mat-card-content>
     <p>
       Duration: <span>{{ run.duration }} min</span>
@@ -10,7 +10,7 @@
       Distance: <span>{{ run.distance_in_mi | number: "1.0-2" }} mi</span>
     </p>
     <p>
-      Pace: <span>{{ run.pace }} min/mi</span>
+      Pace: <span>{{ run.pace }} mph</span>
     </p>
 
     <p>

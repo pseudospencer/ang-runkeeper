@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Run } from '../models/run.model';
 import { RunService } from '../services/run.service';
 import { MapService } from '../services/map.service';
@@ -14,5 +14,9 @@ export class AllRunsCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.runs = this.runService.getRuns();
+  }
+
+  ngAfterViewInit(): void {
+    this.mapService.makeAllMaps();
   }
 }
