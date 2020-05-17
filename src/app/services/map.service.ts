@@ -33,12 +33,12 @@ export class MapService {
     map.maxZoom = 100;
 
     L.tileLayer(
-      'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+      `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}`,
       {
+        tileSize: 512,
+        zoomOffset: -1,
         attribution:
-          'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.satellite',
+          '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         accessToken: apiToken,
       }
     ).addTo(map);
@@ -76,12 +76,12 @@ export class MapService {
       map.maxZoom = 100;
 
       L.tileLayer(
-        'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+        `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}`,
         {
+          tileSize: 512,
+          zoomOffset: -1,
           attribution:
-            'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-          maxZoom: 18,
-          id: 'mapbox.satellite',
+            '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
           accessToken: apiToken,
         }
       ).addTo(map);
