@@ -3,11 +3,11 @@ import { Run } from '../models/run.model';
 import { RunService } from '../services/run.service';
 
 @Component({
-  selector: 'app-activities-table',
-  templateUrl: './activities-table.component.html',
-  styleUrls: ['./activities-table.component.css'],
+  selector: 'app-all-runs-table',
+  templateUrl: './all-runs-table.component.html',
+  styleUrls: ['./all-runs-table.component.css'],
 })
-export class ActivitiesTableComponent implements OnInit {
+export class AllRunsTableComponent implements OnInit {
   runs: Run[];
   runCols: string[] = [
     'date',
@@ -16,7 +16,6 @@ export class ActivitiesTableComponent implements OnInit {
     'climb_ft',
     'average_speed_mph',
   ];
-
   constructor(private runService: RunService) {}
 
   ngOnInit(): void {

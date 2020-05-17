@@ -1,0 +1,9 @@
+.runs-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.runs-header h2 {
+  display: inline-flex;
+  flex-grow: 1;
+}

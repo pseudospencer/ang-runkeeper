@@ -1,0 +1,14 @@
+<app-all-runs-stats></app-all-runs-stats>
+<div class="runs-header">
+  <h2>All Runs</h2>
+  <mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle value="table" checked="true">Table</mat-button-toggle>
+    <mat-button-toggle value="cards">Cards</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<div *ngIf="group.value === 'table'">
+  <app-all-runs-table></app-all-runs-table>
+</div>
+<div *ngIf="group.value === 'cards'">
+  <p>Spencer make the cards</p>
+</div>

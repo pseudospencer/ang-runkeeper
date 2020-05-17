@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RunService } from '../services/run.service';
-import { Run } from '../models/run.model';
 
 @Component({
   selector: 'app-all-runs-stats',

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RunsListComponent } from './runs-list.component';
+import { AllRunsTableComponent } from './all-runs-table.component';
 
-describe('RunsListComponent', () => {
-  let component: RunsListComponent;
-  let fixture: ComponentFixture<RunsListComponent>;
+describe('AllRunsTableComponent', () => {
+  let component: AllRunsTableComponent;
+  let fixture: ComponentFixture<AllRunsTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RunsListComponent ]
+      declarations: [ AllRunsTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RunsListComponent);
+    fixture = TestBed.createComponent(AllRunsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

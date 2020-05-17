@@ -21,10 +21,10 @@ export class MapService {
     const style = {
       color: '#eb4034',
       weight: 5,
-      opacity: 0.5,
+      opacity: 0.75,
     };
     const defaultCoords: number[] = [40, -80];
-    const defaultZoom: number = 8;
+    const defaultZoom: number = 10;
 
     const map = L.map('map').setView(defaultCoords, defaultZoom);
 

@@ -1,2 +1,23 @@
-<p>Run Id :{{ run.id }}</p>
-<div id="map"></div>
+<mat-card>
+  <mat-card-title>Run on {{ run.date | date }} </mat-card-title>
+
+  <div mat-card-image id="map"></div>
+  <mat-card-content>
+    <p>
+      Duration: <span>{{ run.duration }} min</span>
+    </p>
+    <p>
+      Distance: <span>{{ run.distance_in_mi | number: "1.0-2" }} mi</span>
+    </p>
+    <p>
+      Pace: <span>{{ run.pace }} mph</span>
+    </p>
+
+    <p>
+      Climb: <span> {{ run.climb_ft | number: "1.0-2" }} ft</span>
+    </p>
+    <p>
+      Calories: <span> {{ run.calories_burned }} cals</span>
+    </p>
+  </mat-card-content>
+</mat-card>

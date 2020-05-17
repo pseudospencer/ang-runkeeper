@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActivitiesTableComponent } from './activities-table.component';
+import { AllRunsViewComponent } from './all-runs-view.component';
 
-describe('ActivitiesTableComponent', () => {
-  let component: ActivitiesTableComponent;
-  let fixture: ComponentFixture<ActivitiesTableComponent>;
+describe('AllRunsViewComponent', () => {
+  let component: AllRunsViewComponent;
+  let fixture: ComponentFixture<AllRunsViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivitiesTableComponent ]
+      declarations: [ AllRunsViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActivitiesTableComponent);
+    fixture = TestBed.createComponent(AllRunsViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
