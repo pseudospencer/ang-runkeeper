@@ -26,7 +26,9 @@ export class MapService {
     const defaultCoords: number[] = [40, -80];
     const defaultZoom: number = 10;
 
-    const map = L.map('map').setView(defaultCoords, defaultZoom);
+    const mapSelector = `map`;
+
+    const map = L.map(mapSelector).setView(defaultCoords, defaultZoom);
 
     map.maxZoom = 100;
 

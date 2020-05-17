@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
@@ -18,6 +19,7 @@ import { RunService } from './services/run.service';
 import { MapService } from './services/map.service';
 import { AllRunsViewComponent } from './all-runs-view/all-runs-view.component';
 import { AllRunsTableComponent } from './all-runs-table/all-runs-table.component';
+import { AllRunsCardsComponent } from './all-runs-cards/all-runs-cards.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { AllRunsTableComponent } from './all-runs-table/all-runs-table.component
     AllRunsStatsComponent,
     AllRunsViewComponent,
     AllRunsTableComponent,
+    AllRunsCardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { AllRunsTableComponent } from './all-runs-table/all-runs-table.component
     MatButtonModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
+    MatGridListModule,
   ],
   providers: [RunService, MapService],
   bootstrap: [AppComponent],

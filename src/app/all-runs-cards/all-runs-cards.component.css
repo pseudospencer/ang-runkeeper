@@ -1,0 +1,10 @@
+.run-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -6px -6px 12px;
+}
+.run-card {
+  flex-grow: 1;
+  min-width: 30%;
+  margin: 6px;
+}

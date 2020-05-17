@@ -1,0 +1,28 @@
+<div class="run-card-container">
+  <mat-card *ngFor="let run of runs" class="run-card">
+    <mat-card-title
+      ><a routerLink="/run/{{ run.id }}"
+        >Run on {{ run.date | date }}</a
+      ></mat-card-title
+    >
+    <div mat-card-image id="map"></div>
+    <mat-card-content>
+      <p>
+        Duration: <span>{{ run.duration }} min</span>
+      </p>
+      <p>
+        Distance: <span>{{ run.distance_in_mi | number: "1.0-2" }} mi</span>
+      </p>
+      <p>
+        Pace: <span>{{ run.pace }} min/mi</span>
+      </p>
+
+      <p>
+        Climb: <span> {{ run.climb_ft | number: "1.0-2" }} ft</span>
+      </p>
+      <p>
+        Calories: <span> {{ run.calories_burned }} cals</span>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
