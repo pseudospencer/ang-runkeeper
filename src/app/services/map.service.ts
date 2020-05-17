@@ -67,7 +67,11 @@ export class MapService {
     runs.forEach((run) => {
       const mapSelector = `map-${run.id}`;
 
-      const map = L.map(mapSelector).setView(defaultCoords, defaultZoom);
+      const map = new L.map(mapSelector, { scrollWheelZoom: false }).setView(
+        defaultCoords,
+        defaultZoom
+      );
+      map.dragging.disable();
 
       map.maxZoom = 100;
 
