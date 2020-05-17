@@ -15,12 +15,16 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { RunService } from './services/run.service';
 import { MapService } from './services/map.service';
+import { AllRunsStatsComponent } from './all-runs-stats/all-runs-stats.component';
+import { RunsListComponent } from './runs-list/runs-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActivitiesTableComponent,
     ActivityDetailComponent,
+    AllRunsStatsComponent,
+    RunsListComponent,
   ],
   imports: [
     BrowserModule,

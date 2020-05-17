@@ -17,14 +17,9 @@ export class ActivitiesTableComponent implements OnInit {
     'average_speed_mph',
   ];
 
-  totalRuns: number;
-  totalDistance: number;
-
   constructor(private runService: RunService) {}
 
   ngOnInit(): void {
     this.runs = this.runService.getRuns();
-    this.totalRuns = this.runService.getTotalRuns();
-    this.totalDistance = this.runService.getTotalDistance();
   }
 }

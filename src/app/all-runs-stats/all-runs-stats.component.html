@@ -1,0 +1,21 @@
+<div>
+  <h2>Stats</h2>
+  <div class="stat-container">
+    <mat-card class="stat-card"
+      >Total Runs:
+      <span class="mat-display-1">{{ totalRuns | number }}</span></mat-card
+    >
+    <mat-card class="stat-card"
+      >Total Distance:
+      <span class="mat-display-1"
+        >{{ totalDistance | number: "1.0-2" }}mi</span
+      ></mat-card
+    >
+    <mat-card class="stat-card"
+      >Average pace:
+      <span class="mat-display-1"
+        >{{ averagePace | number: "1.0-2" }}mph</span
+      ></mat-card
+    >
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Run } from '../models/run.model';
+import { Run } from '../app/models/run.model';
 
 const data: Run[] = [
   {

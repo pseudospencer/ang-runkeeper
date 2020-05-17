@@ -19,9 +19,9 @@ export class MapService {
 
   makeMap(id: string) {
     const style = {
-      color: 'red',
+      color: '#eb4034',
       weight: 5,
-      opacity: 0.95,
+      opacity: 0.5,
     };
     const defaultCoords: number[] = [40, -80];
     const defaultZoom: number = 8;
