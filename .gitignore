@@ -15,7 +15,7 @@ chrome-profiler-events*.json
 speed-measure-plugin*.json
 
 # Local Env
-/environments/environment.ts
+/src/environments/environment.ts
 
 # IDEs and editors
 /.idea
