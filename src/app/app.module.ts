@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
@@ -41,6 +42,7 @@ import { AllRunsCardsComponent } from './all-runs-cards/all-runs-cards.component
     MatSlideToggleModule,
     MatButtonToggleModule,
     MatGridListModule,
+    FlexLayoutModule,
   ],
   providers: [RunService, MapService],
   bootstrap: [AppComponent],

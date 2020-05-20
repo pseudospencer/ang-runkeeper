@@ -1,23 +1,28 @@
-<mat-card>
-  <mat-card-title>Run on {{ run.date | date }} </mat-card-title>
+<h2 class="mat-title">Run on {{ run.date | date }}</h2>
+<div fxLayout="column" fxLayoutGap="24px">
+  <mat-card>
+    <mat-card-title class="mat-subheading">Run map </mat-card-title>
+    <div id="map" class="map"></div>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Run Stats</mat-card-title>
+    <mat-card-content>
+      <p>
+        Duration: <span>{{ run.duration }} min</span>
+      </p>
+      <p>
+        Distance: <span>{{ run.distance_in_mi | number: "1.0-2" }} mi</span>
+      </p>
+      <p>
+        Pace: <span>{{ run.pace }} mph</span>
+      </p>
 
-  <div mat-card-image id="map" class="map"></div>
-  <mat-card-content>
-    <p>
-      Duration: <span>{{ run.duration }} min</span>
-    </p>
-    <p>
-      Distance: <span>{{ run.distance_in_mi | number: "1.0-2" }} mi</span>
-    </p>
-    <p>
-      Pace: <span>{{ run.pace }} mph</span>
-    </p>
-
-    <p>
-      Climb: <span> {{ run.climb_ft | number: "1.0-2" }} ft</span>
-    </p>
-    <p>
-      Calories: <span> {{ run.calories_burned }} cals</span>
-    </p>
-  </mat-card-content>
-</mat-card>
+      <p>
+        Climb: <span> {{ run.climb_ft | number: "1.0-2" }} ft</span>
+      </p>
+      <p>
+        Calories: <span> {{ run.calories_burned }} cals</span>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
