@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  // this is a public key
+
+  // This is a public key. It is exposed as a URL parameter when requesting maps data from mapbox
   MAPBOX_API_KEY:
     'pk.eyJ1IjoicHNldWRvc3BlbmNlciIsImEiOiJja2E5Ym9lamIwcWw3MnNvenowNXprOTR5In0.4Pj8KF0gj-lyKP5OdlppFA',
 };

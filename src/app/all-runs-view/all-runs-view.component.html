@@ -7,6 +7,10 @@
 </div>
 
 <div [ngSwitch]="group?.value">
-  <app-all-runs-table *ngSwitchCase="'table'"></app-all-runs-table>
+  <app-all-runs-table
+    *ngSwitchCase="'table'"
+    [runs]="runs"
+  ></app-all-runs-table>
+
   <app-all-runs-cards *ngSwitchCase="'cards'"></app-all-runs-cards>
 </div>

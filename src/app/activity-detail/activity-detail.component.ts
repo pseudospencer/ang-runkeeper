@@ -3,6 +3,7 @@ import { RunService } from '../services/run.service';
 import { MapService } from '../services/map.service';
 import { ActivatedRoute } from '@angular/router';
 import { Run } from '../models/run.model';
+import { FeatureCollection } from 'geojson';
 
 @Component({
   selector: 'app-activity-detail',
@@ -10,7 +11,9 @@ import { Run } from '../models/run.model';
   styleUrls: ['./activity-detail.component.css'],
 })
 export class ActivityDetailComponent implements OnInit {
+  id: string;
   run: Run;
+  runData: FeatureCollection;
 
   constructor(
     private runService: RunService,
@@ -19,20 +22,22 @@ export class ActivityDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getRun();
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.run = this.runService.getRun(this.id);
+    this.getRunData();
   }
 
   ngAfterViewInit() {
     this.makeMap();
   }
 
-  getRun(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.run = this.runService.getRun(id);
+  getRunData(): void {
+    this.mapService
+      .getRunGpxData(this.id)
+      .subscribe((data) => (this.runData = data));
   }
 
   makeMap(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.mapService.makeMap(id);
+    this.mapService.makeMap(this.id);
   }
 }

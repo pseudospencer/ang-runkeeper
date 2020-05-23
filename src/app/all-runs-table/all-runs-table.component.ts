@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Run } from '../models/run.model';
-import { RunService } from '../services/run.service';
 
 @Component({
   selector: 'app-all-runs-table',
@@ -8,7 +7,8 @@ import { RunService } from '../services/run.service';
   styleUrls: ['./all-runs-table.component.css'],
 })
 export class AllRunsTableComponent implements OnInit {
-  runs: Run[];
+  @Input() runs: Run[];
+
   runCols: string[] = [
     'date',
     'calories_burned',
@@ -16,9 +16,7 @@ export class AllRunsTableComponent implements OnInit {
     'climb_ft',
     'average_speed_mph',
   ];
-  constructor(private runService: RunService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.runs = this.runService.getRuns();
-  }
+  ngOnInit(): void {}
 }

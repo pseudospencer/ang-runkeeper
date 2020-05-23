@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Run } from '../models/run.model';
 import { RunService } from './run.service';
 import { environment } from '../../environments/environment';
+import { Observable, of } from 'rxjs';
+
+import * as toGeoJSON from '@tmcw/togeojson';
+import * as L from 'leaflet';
+import { FeatureCollection } from 'geojson';
 
 const apiToken = environment.MAPBOX_API_KEY;
 declare const omnivore: any;
-declare const L: any;
 
 @Injectable({
   providedIn: 'root',
@@ -23,14 +27,13 @@ export class MapService {
       weight: 5,
       opacity: 0.75,
     };
-    const defaultCoords: number[] = [40, -80];
+    const defaultCoords: L.LatLngTuple = [40, -80];
     const defaultZoom: number = 10;
 
-    const mapSelector = `map`;
+    const mapSelector = `map-detail-${id}`;
 
-    const map = L.map(mapSelector).setView(defaultCoords, defaultZoom);
-
-    map.maxZoom = 100;
+    const map = new L.Map(mapSelector);
+    map.setView(defaultCoords, defaultZoom);
 
     L.tileLayer(
       `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}`,
@@ -43,7 +46,7 @@ export class MapService {
       }
     ).addTo(map);
 
-    const customLayer = L.geoJson(null, {
+    const customLayer = L.geoJSON(null, {
       style: style,
     });
 
@@ -61,19 +64,15 @@ export class MapService {
       weight: 5,
       opacity: 0.75,
     };
-    const defaultCoords: number[] = [40, -80];
+    const defaultCoords: L.LatLngTuple = [40, -80];
     const defaultZoom: number = 10;
 
     runs.forEach((run) => {
       const mapSelector = `map-${run.id}`;
 
-      const map = new L.map(mapSelector, { scrollWheelZoom: false }).setView(
-        defaultCoords,
-        defaultZoom
-      );
+      const map = new L.Map(mapSelector, { scrollWheelZoom: false });
+      map.setView(defaultCoords, defaultZoom);
       map.dragging.disable();
-
-      map.maxZoom = 100;
 
       L.tileLayer(
         `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}`,
@@ -86,7 +85,7 @@ export class MapService {
         }
       ).addTo(map);
 
-      const customLayer = L.geoJson(null, {
+      const customLayer = L.geoJSON(null, {
         style: style,
       });
 
@@ -94,6 +93,24 @@ export class MapService {
         .gpx(this.getRun(run.id).gpx, null, customLayer)
         .on('ready', () => map.fitBounds(gpxLayer.getBounds()))
         .addTo(map);
+    });
+  }
+
+  getRunGpxData(id: string): Observable<FeatureCollection> {
+    const runFile = this.getRun(id).gpx;
+    return Observable.create((observer) => {
+      fetch(runFile)
+        .then((response) => response.text())
+        .then((data) => {
+          const result: FeatureCollection = toGeoJSON.gpx(
+            new DOMParser().parseFromString(data, 'text/xml')
+          );
+          console.log(result);
+
+          observer.next(result);
+          observer.complete();
+        })
+        .catch((err) => observer.error(err));
     });
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Run } from '../models/run.model';
+import { RunService } from '../services/run.service';
 
 @Component({
   selector: 'app-all-runs-view',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-runs-view.component.css'],
 })
 export class AllRunsViewComponent implements OnInit {
-  constructor() {}
+  runs: Run[];
 
-  ngOnInit(): void {}
+  constructor(private runService: RunService) {}
+
+  ngOnInit(): void {
+    this.runs = this.runService.getRuns();
+  }
 }

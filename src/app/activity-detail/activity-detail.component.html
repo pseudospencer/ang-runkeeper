@@ -1,8 +1,9 @@
 <h2 class="mat-title">Run on {{ run.date | date }}</h2>
+
 <div fxLayout="column" fxLayoutGap="24px">
   <mat-card>
     <mat-card-title class="mat-subheading">Run map </mat-card-title>
-    <div id="map" class="map"></div>
+    <div id="{{ 'map-detail-' + run.id }}" class="map"></div>
   </mat-card>
   <mat-card>
     <mat-card-title>Run Stats</mat-card-title>
@@ -26,3 +27,5 @@
     </mat-card-content>
   </mat-card>
 </div>
+<h3>Raw Run Data</h3>
+<p>{{ runData | json }}</p>
