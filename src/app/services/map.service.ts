@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Run } from '../models/run.model';
+import { GpxJson } from '../models/runDataJson.model';
 import { RunService } from './run.service';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
@@ -113,7 +114,7 @@ export class MapService {
     });
   }
 
-  getRunData(id: string): Observable<JSON> {
+  getRunData(id: string): Observable<GpxJson> {
     const runFile = this.getRun(id).gpx;
     return Observable.create((observer) => {
       fetch(runFile)
