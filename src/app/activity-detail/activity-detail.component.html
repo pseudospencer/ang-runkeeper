@@ -5,6 +5,7 @@
     <mat-card-title class="mat-subheading">Run map </mat-card-title>
     <div id="{{ 'map-detail-' + run.id }}" class="map"></div>
   </mat-card>
+
   <mat-card>
     <mat-card-title>Run Stats</mat-card-title>
     <mat-card-content>
@@ -24,6 +25,21 @@
       <p>
         Calories: <span> {{ run.calories_burned }} cals</span>
       </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Run Elevation</mat-card-title>
+    <mat-card-content style="height: 300px;">
+      <ngx-charts-line-chart
+        [results]="lineGraphData"
+        [autoScale]="autoScale"
+        [roundDomains]="roundDomains"
+        [timeline]="timeline"
+        [showYAxisLabel]="showYAxis"
+        [yAxis]="showYAxis"
+        [yAxisLabel]="yAxisLabel"
+      ></ngx-charts-line-chart>
     </mat-card-content>
   </mat-card>
 
@@ -61,8 +77,7 @@
     </mat-table>
   </mat-card>
 
-  <p *ngFor="let t of trk">{{ t | json }}</p>
-
+  <!-- <p *ngFor="let t of trk">{{ t | json }}</p> -->
   <!-- <h3>Run Data Json</h3>
   <p>{{ runData | json }}</p> -->
 </div>

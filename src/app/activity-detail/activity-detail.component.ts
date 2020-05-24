@@ -15,8 +15,16 @@ export class ActivityDetailComponent implements OnInit {
   run: Run;
   runData: GpxJson;
   trk: TrkPoint[];
-
+  // table
   tableCols: string[] = ['time', 'lat', 'lon', 'ele'];
+  // line graph
+  lineGraphData: any;
+  autoScale: boolean = true;
+  roundDomains: boolean = true;
+  showYAxis: boolean = true;
+  yAxisLabel: string = 'Elevation (Meters)';
+  xAxisLabel: 'Time';
+  timeline: boolean = true;
 
   constructor(
     private runService: RunService,
@@ -38,14 +46,19 @@ export class ActivityDetailComponent implements OnInit {
     this.mapService.getRunData(this.id).subscribe((d) => {
       this.runData = d;
       this.trk = this.runData.gpx.trk.trkseg.trkpt;
+      this.makeElevationGraphData();
     });
-  }
-
-  getRunElevationArray(): number[] {
-    return this.trk.map((t) => t.ele);
   }
 
   makeMap(): void {
     this.mapService.makeMap(this.id);
+  }
+
+  makeElevationGraphData(): void {
+    const datapoints = this.trk.map((t) => {
+      return { name: new Date(t.time).toLocaleTimeString(), value: t.ele };
+    });
+
+    this.lineGraphData = [{ name: 'elevation (m)', series: [...datapoints] }];
   }
 }
