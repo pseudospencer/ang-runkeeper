@@ -13,7 +13,10 @@ import { FeatureCollection } from 'geojson';
 export class ActivityDetailComponent implements OnInit {
   id: string;
   run: Run;
-  runData: JSON;
+  runData: any;
+  trk: Object[];
+
+  tableCols: string[] = ['time', 'lat', 'lon', 'ele'];
 
   constructor(
     private runService: RunService,
@@ -32,7 +35,10 @@ export class ActivityDetailComponent implements OnInit {
   }
 
   getRunData(): void {
-    this.mapService.getRunData(this.id).subscribe((d) => (this.runData = d));
+    this.mapService.getRunData(this.id).subscribe((d) => {
+      this.runData = d;
+      this.trk = this.runData.gpx.trk.trkseg.trkpt;
+    });
   }
 
   makeMap(): void {

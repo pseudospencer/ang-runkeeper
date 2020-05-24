@@ -26,6 +26,43 @@
       </p>
     </mat-card-content>
   </mat-card>
+
+  <h3>Run Data Points</h3>
+  <mat-card class="activites-table">
+    <mat-table [dataSource]="trk">
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+        <mat-cell *matCellDef="let t">
+          {{ t.time | date: "medium" }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lat">
+        <mat-header-cell *matHeaderCellDef>Lat</mat-header-cell>
+        <mat-cell *matCellDef="let t">{{ t.lat }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lon">
+        <mat-header-cell *matHeaderCellDef>Lon</mat-header-cell>
+        <mat-cell *matCellDef="let t">
+          {{ t.lon }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ele">
+        <mat-header-cell *matHeaderCellDef>Ele</mat-header-cell>
+        <mat-cell *matCellDef="let t">
+          {{ t.ele }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tableCols"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableCols"></mat-row>
+    </mat-table>
+  </mat-card>
+
+  <p *ngFor="let t of trk">{{ t | json }}</p>
+
+  <!-- <h3>Run Data Json</h3>
+  <p>{{ runData | json }}</p> -->
 </div>
-<h3>Run Data Json</h3>
-<p>{{ runData | json }}</p>
