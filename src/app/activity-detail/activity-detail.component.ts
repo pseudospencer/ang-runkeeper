@@ -13,7 +13,7 @@ import { FeatureCollection } from 'geojson';
 export class ActivityDetailComponent implements OnInit {
   id: string;
   run: Run;
-  runData: FeatureCollection;
+  runData: JSON;
 
   constructor(
     private runService: RunService,
@@ -32,9 +32,7 @@ export class ActivityDetailComponent implements OnInit {
   }
 
   getRunData(): void {
-    this.mapService
-      .getRunGpxData(this.id)
-      .subscribe((data) => (this.runData = data));
+    this.mapService.getRunData(this.id).subscribe((d) => (this.runData = d));
   }
 
   makeMap(): void {

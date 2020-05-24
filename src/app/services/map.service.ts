@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Run } from '../models/run.model';
 import { RunService } from './run.service';
 import { environment } from '../../environments/environment';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
+import * as fastXml from 'fast-xml-parser';
 import * as toGeoJSON from '@tmcw/togeojson';
 import * as L from 'leaflet';
 import { FeatureCollection } from 'geojson';
@@ -96,7 +97,7 @@ export class MapService {
     });
   }
 
-  getRunGpxData(id: string): Observable<FeatureCollection> {
+  getRunGeoJson(id: string): Observable<FeatureCollection> {
     const runFile = this.getRun(id).gpx;
     return Observable.create((observer) => {
       fetch(runFile)
@@ -105,12 +106,29 @@ export class MapService {
           const result: FeatureCollection = toGeoJSON.gpx(
             new DOMParser().parseFromString(data, 'text/xml')
           );
-          console.log(result);
-
           observer.next(result);
           observer.complete();
         })
         .catch((err) => observer.error(err));
+    });
+  }
+
+  getRunData(id: string): Observable<JSON> {
+    const runFile = this.getRun(id).gpx;
+    return Observable.create((observer) => {
+      fetch(runFile)
+        .then((rf) => {
+          return rf.text();
+        })
+        .then((data) => {
+          const res = fastXml.parse(data, {
+            attributeNamePrefix: '',
+            ignoreAttributes: false,
+          });
+          observer.next(res);
+          observer.complete();
+        })
+        .catch((err) => observer.console.error(err));
     });
   }
 }
